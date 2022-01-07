@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pluzad.conn_finance.entities.Category;
-import com.pluzad.conn_finance.services.CategoryServices;
+import com.pluzad.conn_finance.entities.Product;
+import com.pluzad.conn_finance.services.ProductServices;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
 
 	@Autowired
-	private CategoryServices services;
+	private ProductServices services;
 	
 	@GetMapping
-	public ResponseEntity<List<Category>> findAll() {		
-		List<Category> list = services.findAll();		
+	public ResponseEntity<List<Product>> findAll() {		
+		List<Product> list = services.findAll();		
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Long id){
-		Category obj = services.findById(id);		
+	public ResponseEntity<Product> findById(@PathVariable Long id){
+		Product obj = services.findById(id);		
 		return ResponseEntity.ok().body(obj);		
 	}
 	

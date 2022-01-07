@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Profile;
 import com.pluzad.conn_finance.entities.Category;
 import com.pluzad.conn_finance.entities.Client;
 import com.pluzad.conn_finance.entities.Order;
+import com.pluzad.conn_finance.entities.Product;
 import com.pluzad.conn_finance.entities.User;
 import com.pluzad.conn_finance.entities.enums.OrderStatus;
 import com.pluzad.conn_finance.repositories.CategoryRepository;
 import com.pluzad.conn_finance.repositories.ClientRepository;
 import com.pluzad.conn_finance.repositories.OrderRepository;
+import com.pluzad.conn_finance.repositories.ProductRepository;
 import com.pluzad.conn_finance.repositories.UserRepository;
 
 @Configuration
@@ -34,6 +36,8 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -55,11 +59,18 @@ public class TestConfig implements CommandLineRunner {
 		Category ca2 = new Category(null, "Vegetais");
 		Category ca3 = new Category(null, "Frutas");
 		
+		Product p1 = new Product(null, "Tomate", " 1 lorem ipsum, lorem", 12.05, "");
+		Product p2 = new Product(null, "Laranja", "2 lorem ipsum, lorem", 8.05, "");
+		Product p3 = new Product(null, "Cereja", "3 lorem ipsum, lorem", 18.05, "");
+		Product p4 = new Product(null, "Maçã", "4 lorem ipsum, lorem", 6.05, "");
+		Product p5 = new Product(null, "Cebola", "5 lorem ipsum, lorem", 10.00, "");
+		
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		clientRepository.saveAll(Arrays.asList(c1, c2));
 		orderRepository.saveAll(Arrays.asList(o1, o2));
 		categoryRepository.saveAll(Arrays.asList(ca1, ca2, ca3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
 		
 	}
