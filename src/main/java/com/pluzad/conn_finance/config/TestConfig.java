@@ -8,10 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.pluzad.conn_finance.entities.Category;
 import com.pluzad.conn_finance.entities.Client;
 import com.pluzad.conn_finance.entities.Order;
 import com.pluzad.conn_finance.entities.User;
 import com.pluzad.conn_finance.entities.enums.OrderStatus;
+import com.pluzad.conn_finance.repositories.CategoryRepository;
 import com.pluzad.conn_finance.repositories.ClientRepository;
 import com.pluzad.conn_finance.repositories.OrderRepository;
 import com.pluzad.conn_finance.repositories.UserRepository;
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 
 	@Override
@@ -46,10 +51,16 @@ public class TestConfig implements CommandLineRunner {
 		Order o1 = new Order(null, Instant.parse("2021-01-07T12:57:07Z"), u2, OrderStatus.PAID, c1);
 		Order o2 = new Order(null, Instant.parse("2021-01-06T11:59:07Z"), u1, OrderStatus.DELIVERED, c2);
 		
+		Category ca1 = new Category(null, "Enlatados");
+		Category ca2 = new Category(null, "Vegetais");
+		Category ca3 = new Category(null, "Frutas");
+		
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		clientRepository.saveAll(Arrays.asList(c1, c2));
 		orderRepository.saveAll(Arrays.asList(o1, o2));
+		categoryRepository.saveAll(Arrays.asList(ca1, ca2, ca3));
+		
 		
 	}
 	
