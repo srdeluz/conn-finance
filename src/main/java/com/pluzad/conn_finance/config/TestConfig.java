@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.pluzad.conn_finance.entities.Client;
 import com.pluzad.conn_finance.entities.Order;
 import com.pluzad.conn_finance.entities.User;
+import com.pluzad.conn_finance.entities.enums.OrderStatus;
 import com.pluzad.conn_finance.repositories.ClientRepository;
 import com.pluzad.conn_finance.repositories.OrderRepository;
 import com.pluzad.conn_finance.repositories.UserRepository;
@@ -42,8 +43,8 @@ public class TestConfig implements CommandLineRunner {
 				"Rua das Xicas", 55, "Bairro das Xicas", "Xicas City", 
 				"Chora demais", true, Instant.parse("2021-01-07T15:57:07Z"));
 		
-		Order o1 = new Order(null, Instant.parse("2021-01-07T12:57:07Z"), u2, c1);
-		Order o2 = new Order(null, Instant.parse("2021-01-06T11:59:07Z"), u1, c2);
+		Order o1 = new Order(null, Instant.parse("2021-01-07T12:57:07Z"), u2, OrderStatus.PAID, c1);
+		Order o2 = new Order(null, Instant.parse("2021-01-06T11:59:07Z"), u1, OrderStatus.DELIVERED, c2);
 		
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
